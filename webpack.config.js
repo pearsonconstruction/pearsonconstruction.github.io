@@ -17,10 +17,10 @@ module.exports = {
     mode: isProd ? 'production' : 'development',
     devtool: isProd ? undefined : 'source-map',
     devServer: {
-        contentBase: './docs',
+        contentBase: './dist',
     },
     output: {
-        path: path.resolve(__dirname, 'docs'),
+        path: path.resolve(__dirname, 'dist'),
         filename: '[name].[contenthash].js',
         publicPath: ''
     },
