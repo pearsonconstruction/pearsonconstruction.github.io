@@ -18,6 +18,7 @@ module.exports = {
     devtool: isProd ? undefined : 'source-map',
     devServer: {
         contentBase: './dist',
+        hot: true,
     },
     output: {
         path: path.resolve(__dirname, 'dist'),
