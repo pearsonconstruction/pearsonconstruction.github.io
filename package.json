@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Website of Pearson Construction",
   "scripts": {
-    "start": "webpack serve --open",
+    "start": "webpack serve",
     "build": "webpack"
   },
   "license": "UNLICENSE",
@@ -20,11 +20,17 @@
       "postcss-preset-env"
     ]
   },
+  "prettier": {
+    "singleQuote": true,
+    "tabWidth": 4,
+    "useTabs": true
+  },
   "devDependencies": {
     "@babel/core": "^7.12.10",
     "@babel/preset-env": "^7.12.11",
     "babel-loader": "^8.2.2",
     "clean-webpack-plugin": "^3.0.0",
+    "copy-webpack-plugin": "^7.0.0",
     "csp-html-webpack-plugin": "^5.1.0",
     "css-loader": "^5.0.1",
     "css-minimizer-webpack-plugin": "^1.2.0",
@@ -34,10 +40,18 @@
     "postcss": "^8.2.4",
     "postcss-loader": "^4.2.0",
     "postcss-preset-env": "^6.7.0",
+    "prettier": "^2.2.1",
     "style-loader": "^2.0.0",
     "webpack": "^5.19.0",
     "webpack-cli": "^4.4.0",
-    "webpack-dev-server": "^3.11.2"
+    "webpack-dev-server": "^3.11.2",
+    "webpack-pwa-manifest": "^4.3.0",
+    "webpack-subresource-integrity": "^1.5.2",
+    "workbox-webpack-plugin": "^6.1.0"
   },
-  "dependencies": {}
+  "dependencies": {
+    "focus-visible": "^5.2.0",
+    "npkill": "^0.7.3",
+    "swiper": "^6.4.14"
+  }
 }
