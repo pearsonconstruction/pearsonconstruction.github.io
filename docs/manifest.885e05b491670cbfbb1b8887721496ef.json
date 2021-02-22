@@ -1,0 +1,18 @@
+{
+  "icons": [
+    {
+      "src": "icon_534x534.139dc01d650fec48800820445c2a7702.png",
+      "sizes": "534x534",
+      "type": "image/png"
+    }
+  ],
+  "name": "Pearson Construction",
+  "short_name": "Pearson Construction",
+  "display": "minimal-ui",
+  "start_url": "/",
+  "description": "Pearson Construction provides quality qualified building work in Wellington, New Zealand",
+  "theme_color": "#f2bb05",
+  "background_color": "#f2bb05",
+  "scope": "/",
+  "lang": "en-nz"
+}
