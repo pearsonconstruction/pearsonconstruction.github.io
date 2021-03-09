@@ -43,13 +43,14 @@ module.exports = {
 		}),
 		new HtmlWebpackPlugin({
 			template: 'src/index.html',
+			favicon: 'src/img/favicon.png',
 		}),
 		new CopyPlugin({
 			patterns: [{ from: 'src/static', to: '.' }],
 		}),
 		new CspHtmlWebpackPlugin({
 			'script-src': [
-				`'sha256-pvsdOjLTO7g2638vlJelZWXG6vO5lJuYF9h0w+JgYn0='`,
+				`'sha256-zQg+Yh21X77A6mM86dXVdq89aYaNkHqnJoIbzTphee8='`,
 			],
 			'worker-src': [`'self'`],
 			'style-src': [`'self'`, 'https://fonts.googleapis.com'],
@@ -59,20 +60,22 @@ module.exports = {
 			hashFuncNames: ['sha256', 'sha384'],
 			enabled: process.env.NODE_ENV === 'production',
 		}),
-		isProd ? new WorkboxPlugin.GenerateSW({
-			clientsClaim: true,
-			skipWaiting: true,
-			exclude: [imgsRegex],
-			runtimeCaching: [
-				{
-					urlPattern: imgsRegex,
-					handler: 'CacheFirst',
-					options: {
-						cacheName: 'images',
-					},
-				},
-			],
-		}) : undefined,
+		isProd
+			? new WorkboxPlugin.GenerateSW({
+					clientsClaim: true,
+					skipWaiting: true,
+					exclude: [imgsRegex],
+					runtimeCaching: [
+						{
+							urlPattern: imgsRegex,
+							handler: 'CacheFirst',
+							options: {
+								cacheName: 'images',
+							},
+						},
+					],
+			  })
+			: undefined,
 		new WebpackPwaManifest({
 			name: 'Pearson Construction',
 			short_name: 'Pearson Construction',

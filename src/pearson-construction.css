@@ -5,7 +5,20 @@
 
 .js-focus-visible .focus-visible {
 	outline: 1px solid #f2bb05 !important;
-	box-shadow: 0px 0px 10px 1px rgba(242,187,5,1) !important;
+	box-shadow: 0px 0px 10px 1px rgba(242, 187, 5, 1) !important;
+}
+
+.sr-only {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	white-space: nowrap;
+	-webkit-clip-path: inset(50%);
+	clip-path: inset(50%);
+	border: 0;
 }
 
 html {
@@ -14,8 +27,14 @@ html {
 	font-weight: 400;
 }
 
+@media screen and (min-width: 1024px) {
+	html {
+		font-size: 16px;
+	}
+}
+
 body {
-	font-family: 'Roboto', sans-serif;
+	font-family: 'Cairo', sans-serif;
 	color: #757575;
 	min-width: 320px;
 	padding: unset;
@@ -50,7 +69,10 @@ hr {
 }
 
 h1,
-h2 {
+h2,
+h3,
+h4,
+h5 {
 	font-family: 'Castoro', serif;
 	color: #09273c;
 }
@@ -58,22 +80,44 @@ h2 {
 h1 {
 	margin-top: 10px;
 	margin-bottom: 10px;
+	color: #000;
 }
 
 h2 {
 	font-size: 2rem;
 	line-height: 2rem;
+	margin-bottom: 0.5rem;
+}
+h3 {
+	font-size: 1.5rem;
+	line-height: 1.5rem;
+	margin-bottom: 0.25rem;
+}
+
+h2,
+h3 {
 	font-weight: 400;
 	text-align: center;
-	margin-bottom: 0.5rem;
 }
 
 ul {
+	list-style: none;
 	padding-left: 1rem;
 }
 
 li {
 	margin-bottom: 0.5rem;
+	position: relative;
+	padding-left: 1.5rem;
+}
+
+ul li:before {
+	content: '✓';
+	font-weight: 700;
+	position: absolute;
+	top: 0;
+	left: 0;
+	font-size: 1.2rem;
 }
 
 a {
@@ -97,7 +141,7 @@ header {
 	padding: 10px;
 	text-align: center;
 	position: relative;
-	border-bottom: 2px solid #f2bb05;
+	border-bottom: 3px solid #f2bb05;
 }
 header::after {
 	content: '';
@@ -113,7 +157,7 @@ header::after {
 }
 
 .logo {
-	margin: 2rem 3rem;
+	margin: 1rem auto;
 }
 
 .logo img {
@@ -128,6 +172,7 @@ header::after {
 .logo__tagline {
 	font-size: 1rem;
 	font-variant: small-caps;
+	white-space: nowrap;
 }
 
 header a {
@@ -153,7 +198,7 @@ header a {
 */
 
 .hero {
-	background-color: #cccccc;
+	background-color: #ebebeb;
 	height: 350px;
 	display: flex;
 	justify-content: space-around;
@@ -161,6 +206,15 @@ header a {
 	font-family: Castoro, serif;
 	position: relative;
 	margin-top: 0 !important;
+}
+
+.hero::before {
+	content: '';
+	flex: 1;
+}
+.hero::after {
+	content: '';
+	flex: 3;
 }
 
 .hero__text-row {
@@ -187,13 +241,23 @@ header a {
 	text-align: center;
 	color: white;
 	font-weight: 500;
-	font-size: 1.5rem;
+	font-size: 1.2rem;
 	line-height: 1.6;
 	text-shadow: #000 2px 0 30px;
-	margin: 0;
+	margin: 2rem 0 0 0;
 	padding: 0;
 	z-index: 10;
 	user-select: none;
+}
+.hero__tagline > span {
+	white-space: nowrap;
+	display: block;
+}
+
+@media screen and (min-width: 420px) {
+	.hero__tagline {
+		font-size: 1.6rem;
+	}
 }
 
 @media screen and (min-width: 480px) {
@@ -202,7 +266,7 @@ header a {
 	}
 
 	.hero__tagline {
-		font-size: 2rem;
+		font-size: 1.8rem;
 	}
 }
 
@@ -221,6 +285,10 @@ header a {
 		flex-shrink: 0;
 		display: unset;
 		padding: 1rem;
+	}
+
+	.hero__tagline {
+		font-size: 2rem;
 	}
 }
 
@@ -258,6 +326,10 @@ header a {
 	flex-direction: column;
 }
 
+.about-us__lead {
+	font-size: 1.3rem;
+}
+
 .certifications-logo-wrapper {
 	order: 2;
 	text-align: center;
@@ -280,6 +352,112 @@ header a {
 }
 
 /* =================================================================================
+ * Testimonials
+*/
+.testimonials {
+	margin-bottom: 0;
+}
+
+.testimonial {
+	margin: 0 0 2rem 0;
+	position: relative;
+}
+
+.testimonial:last-child {
+	margin-bottom: 0;
+}
+.testimonial__heading {
+	font-size: 1.5rem;
+	margin-top: 0;
+}
+.testimonial__heading > span {
+	color: #757575;
+	opacity: 0.25;
+	font-size: 3.5rem;
+	display: none;
+}
+
+.testimonial svg {
+	width: 3rem;
+	height: 6rem;
+	position: absolute;
+	top: -50px;
+	left: -40px;
+	z-index: 3;
+}
+.testimonial svg > path {
+	fill: #ccc;
+}
+
+.testimonial > blockquote {
+	margin: 0;
+	font-style: italic;
+	padding: 1rem;
+	border-radius: 1rem;
+	position: relative;
+	z-index: 5;
+	overflow: hidden;
+	color: #333;
+}
+
+.testimonial > blockquote::after {
+	content: '';
+	background-color: #ededed;
+	background-image: url('img/retina-wood-texture.png');
+	opacity: 0.5;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	position: absolute;
+	z-index: -1;
+}
+
+.testimonial > blockquote > p:first-child {
+	margin-top: 0;
+}
+
+.testimonial > blockquote > p:last-child {
+	margin-bottom: 0;
+}
+
+.testimonial > figcaption {
+	text-align: right;
+	color: #09273c;
+}
+
+.testimonial > figcaption::before {
+	content: '— ';
+}
+
+@media (min-width: 1024px) {
+	.testimonials {
+		display: flex;
+		justify-content: center;
+	}
+
+	.testimonial {
+		width: 50%;
+		/* padding: 1rem; */
+		max-width: 600px;
+		margin-bottom: 0;
+	}
+
+	.testimonial + .testimonial {
+		margin-left: 2rem;
+	}
+
+	.testimonials.container {
+		max-width: 100%;
+	}
+
+	.testimonial svg {
+		top: -20px;
+		left: -20px;
+	}
+}
+
+/* =================================================================================
  * Get in touch
 */
 
@@ -289,7 +467,13 @@ header a {
 
 .tom-profile {
 	display: flex;
+	flex-wrap: wrap;
 	align-items: center;
+	text-align: center;
+}
+
+.tom-profile picture {
+	margin: 0 auto;
 }
 
 .tom-profile img {
@@ -297,12 +481,11 @@ header a {
 	height: 125px;
 	border-radius: 50%;
 	display: block;
-	margin: 0.5rem 1rem;
-	transition: transform 0.3s ease-in-out;
+	margin: 0.5rem auto;
 }
 
-.tom-profile img:hover {
-	transform: rotate(360deg);
+.tom-profile-text {
+	margin: 0 auto;
 }
 
 .tom-profile-text > div {
@@ -315,6 +498,21 @@ header a {
 
 .tom-profile-text a {
 	margin-bottom: 0.25rem;
+}
+
+@media (min-width: 630px) {
+	.tom-profile {
+		text-align: left;
+	}
+	.tom-profile-text {
+		margin: 0;
+	}
+	.tom-profile picture {
+		margin: 0;
+	}
+	.tom-profile img {
+		margin: 0.5rem 1rem;
+	}
 }
 
 @media (max-width: 768px) {
@@ -332,7 +530,8 @@ header a {
 .form-wrapper {
 	background-color: #09273c;
 	position: relative;
-	padding: 2rem;
+	padding-top: 2rem;
+	padding-bottom: 2rem;
 }
 .form-wrapper::after {
 	content: '';
@@ -346,14 +545,13 @@ header a {
 	z-index: 0;
 }
 
-form {
-	margin: 0 1rem;
-}
-
 @media screen and (min-width: 768px) {
 	form {
 		width: 75%;
 		margin: 0 auto;
+	}
+	.form-wrapper {
+		padding: 2rem;
 	}
 }
 @media screen and (min-width: 1024px) {
@@ -456,29 +654,12 @@ button[type='submit'] {
  * (copied in, pared back, customised)
 */
 
-
-
-
 .swiper-slide img {
 	object-fit: cover;
 	display: block;
 	min-width: 100%;
 	height: 100%;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 .swiper-container {
 	margin-left: auto;
@@ -570,7 +751,7 @@ button.swiper-pagination-bullet {
 .swiper-container-horizontal
 	> .swiper-pagination-bullets
 	.swiper-pagination-bullet {
-		margin: 0 0.5rem;
+	margin: 0 0.5rem;
 }
 .swiper-pagination-bullet > span {
 	position: absolute !important;
