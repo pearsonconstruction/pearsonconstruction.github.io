@@ -51,7 +51,7 @@ module.exports = {
 		new CspHtmlWebpackPlugin({
 			'script-src': [
 				`'sha256-zQg+Yh21X77A6mM86dXVdq89aYaNkHqnJoIbzTphee8='`,
-				`https://pearsonconstruction.co.nz/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js`
+				`'sha256-ZVrYXAXe9e7vZeTnbvbWzwcSfH33g7W7epQfnLBXrWg='`
 			],
 			'worker-src': [`'self'`],
 			'style-src': [`'self'`, 'https://fonts.googleapis.com'],
