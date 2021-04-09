@@ -66,7 +66,7 @@ module.exports = {
 			? new WorkboxPlugin.GenerateSW({
 					clientsClaim: true,
 					skipWaiting: true,
-					exclude: [imgsRegex],
+					exclude: [imgsRegex, /.*_config.yml$/i, /.*security.txt$/i],
 					runtimeCaching: [
 						{
 							urlPattern: imgsRegex,
