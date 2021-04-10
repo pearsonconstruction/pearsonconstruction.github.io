@@ -250,13 +250,13 @@ header a {
 	display: block;
 }
 
-@media screen and (min-width: 420px) {
+@media screen and (min-width: 480px) {
 	.hero__tagline {
 		font-size: 1.6rem;
 	}
 }
 
-@media screen and (min-width: 480px) {
+@media screen and (min-width: 520px) {
 	.hero__text-row-content a {
 		padding: 0.5rem;
 	}
