@@ -75,6 +75,13 @@ module.exports = {
 								cacheName: 'images',
 							},
 						},
+						{
+							urlPattern: /.*cloudflare-static\/email-decode\.min\.js$/i,
+							handler: 'CacheFirst',
+							options: {
+								cacheName: 'cloudflare',
+							},
+						},
 					],
 			  })
 			: undefined,
