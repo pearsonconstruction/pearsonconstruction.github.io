@@ -1,6 +1,6 @@
-import Swiper from 'swiper';
-import SwiperCore, { Pagination, EffectFade } from 'swiper/core';
 import 'focus-visible';
+import Swiper from 'swiper';
+import SwiperCore, { Autoplay, EffectFade, Pagination } from 'swiper/core';
 
 document.addEventListener('DOMContentLoaded', () => {
 	Array.from(document.querySelectorAll('input,textarea')).forEach((input) => {
@@ -54,12 +54,16 @@ document.addEventListener('DOMContentLoaded', () => {
 	});
 
 	setTimeout(() => {
-		SwiperCore.use([Pagination, EffectFade]);
+		const wrapper = document.querySelector('.swiper-wrapper');
+		for (const img of document.getElementsByClassName('additional-image')) {
+			wrapper.appendChild(img.content);
+		}
+		SwiperCore.use([Pagination, EffectFade, Autoplay]);
 		const swiper = new Swiper('.swiper-container', {
 			slidesPerView: 1,
 			loop: true,
 			autoplay: {
-				delay: 3000,
+				delay: 7000,
 				disableOnInteraction: false,
 			},
 			pagination: {
@@ -67,8 +71,14 @@ document.addEventListener('DOMContentLoaded', () => {
 				clickable: true,
 				bulletElement: 'button',
 				renderBullet: function (index, className) {
-					return '<button class="' + className + '"><span>View image ' + (index + 1) + '</span></button>';
-				  }
+					return (
+						'<button class="' +
+						className +
+						'"><span>View image ' +
+						(index + 1) +
+						'</span></button>'
+					);
+				},
 			},
 			effect: 'fade',
 			fadeEffect: {
@@ -84,9 +94,6 @@ document.addEventListener('DOMContentLoaded', () => {
 				paginationBulletMessage: 'Go to image {{index}}',
 			},
 		});
-		for (const img of document.getElementsByClassName('additional-image')) {
-			swiper.appendSlide(img.content);
-		}
 	}, 1000);
 
 	if (process.env.NODE_ENV === 'production') {
