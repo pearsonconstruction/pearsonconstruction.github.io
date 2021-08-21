@@ -427,6 +427,7 @@ button[type='submit'] {
 .form-field textarea:not(:placeholder-shown) + label {
 	transform: translate(0%, -20%) scale(0.8);
 	opacity: 0.75;
+	padding-bottom: 0;
 }
 
 .form-message--success,
